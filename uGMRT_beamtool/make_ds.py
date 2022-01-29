@@ -8,10 +8,9 @@ from candidate import SigprocFile
 This script is written by Devojyoti Kansabanik, NCRA-TIFR, May 2019
 '''
 
-
 datadir=os.path.dirname(uGMRT_beamutils.__file__)
 
-def convert_16to8_bit(rawfil,outfil):
+def convert_16to8_bit(rawfil,outfil,duration,nchan,timeres,verbose=False):
 	'''
 	Function to convert RAW 16-bit file into 8-bit file
 	Parameters
@@ -20,14 +19,23 @@ def convert_16to8_bit(rawfil,outfil):
 		Name of the RAW 16-bit file
 	outfil : str
 		Output 8-bit file name
+	duration : int
+		Total duration in seconds
+	nchan : int
+		Total number of channels
+	timeres : float
+		Time resolution in second
+	verbose : bool
+		Verbose output
 	Returns
 	-------
 	str
 		Name of the 8-bit file
 	'''
 	readPA=datadir+'/readPA/read_PAbeam.polar.freqint.16_to_8'
-	print (readPA+' '+rawfil+' '+outfil+' '+str(duration)+' '+str(nchan)+' '+timeres+' 1 8'+'\n')
-	os.system(readPA+' '+rawfil+' '+outfil+' '+str(duration)+' '+str(nchan)+' '+timeres+' 1 8')
+	if verbose:
+		print (readPA+' '+rawfil+' '+outfil+' '+str(duration)+' '+str(nchan)+' '+str(timeres)+' 1 8'+'\n')
+	os.system(readPA+' '+rawfil+' '+outfil+' '+str(duration)+' '+str(nchan)+' '+str(timeres)+' 1 8')
 	return outfil	
 
 def make_hdr(raw_file,timestampfile,working_dir='',beammode='PA',nchan=4096,start_freq=500,sideband='LSB',bandwidth=200,nbit=8,timeres=81.92,sourcename='',sourcera='',sourcedec=''):
@@ -304,6 +312,7 @@ def main():
 	parser.add_option('--workdir',dest='workdir',default=None,help='Name of the working directory',metavar='Directory path')
 	parser.add_option('--verbose',dest="verbose",default=False,help="Verbose mode",metavar="Boolean")
 	parser.add_option('--nbit',dest="nbit",default=16,help="Bit samples of the beam data recording",metavar="Integer")
+	parser.add_option('--duration',dest="duration",default=1000,help="Observation scan length in seconds (Only required for 16 bit data)",metavar="Integer")
 	parser.add_option('--start_freq',dest="start_freq",default=None,help="Start frequency in MHz (LO frequency)",metavar="Float")
 	parser.add_option('--bandwidth',dest="bandwidth",default=None,help="Bandwidth in MHz",metavar="Float")
 	parser.add_option('--nchan',dest="nchan",default=None,help="Number of channels",metavar="Integer")
@@ -368,7 +377,8 @@ def main():
 	if int(options.nbit)==16:
 		if verbose:
 			print ('Converting 16 bit to 8 bit....\n')
-		rawfile=convert_16to8_bit(options.rawfile,os.path.basename(options.rawfile)+'.8bit')
+		rawfile=convert_16to8_bit(options.rawfile,os.path.dirname(os.path.abspath(options.rawfile))+'/'+os.path.basename(options.rawfile)+'.8bit',\
+				int(options.duration),int(options.nchan),float(options.timeres)/10**6)
 	else:
 		rawfile=options.rawfile
 

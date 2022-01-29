@@ -8,7 +8,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='uGMRT_beamds',
-    version='1.1.0',
+    version='1.1.1',
     packages=find_packages(),
     package_data={'uGMRT_beamutils':['*','gptool_ver4.2.1/*','sigproc_install/bin/*','readPA/*']},
     author='Devojyoti Kansabanik',
