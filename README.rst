@@ -8,6 +8,12 @@ Requirements
 
 2. numpy==1.19.0, scipy==1.6.2, astropy==4.3, pandas, seaborn, pysigproc
 
+Installation
+************
+1. pip install uGMRT-beamds
+
+If multiple versions of python exists, python3 -m pip install uGMRT-beamds
+
 Tasks
 *****
 1. make\_uGMRT\_ds : Task to made dynamic spectrum from the uGMRT beamformer raw data file and save it as a Pandas Dataframe. Type **make\_uGMRT\_ds -h** in terminal for more details.
