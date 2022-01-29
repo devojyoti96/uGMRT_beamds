@@ -1,11 +1,12 @@
-# uGMRT_beamds
-===============
+uGMRT_beamds
+============
 A python package to make and plot dynamic spectrum from uGMRT beamformer observations
 
 Requirements
 ************
 1. python3
-2. numpy==1.19.0, scipy==1.6.2,astropy==4.3,julian,psutil,cmake,pandas,seaborn,pysigproc
+
+2. numpy==1.19.0, scipy==1.6.2, astropy==4.3, pandas, seaborn, pysigproc
 
 Tasks
 *****
