@@ -14,7 +14,7 @@ PA		: Beam mode
 -------------------------------------------------
 #****Pulsar Parameters****#
 J1807-0847	: Pulsar name
-0.1		: Pulsar period (in milliseconds)
+0.1			: Pulsar period (in milliseconds)
 0.01		: DM (in pc/cc)
 -------------------------------------------------
 #****Dedispersion & Folding parameters****#

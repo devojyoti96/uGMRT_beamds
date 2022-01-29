@@ -10,6 +10,6 @@ Requirements
 
 Tasks
 *****
-1. make\_uGMRT\_ds : Task to made dynamic spectrum from the uGMRT beamformer raw data file and save it as a Pandas Dataframe. Type ``make\_uGMRT\_ds -h'' in terminal for more details.
+1. make\_uGMRT\_ds : Task to made dynamic spectrum from the uGMRT beamformer raw data file and save it as a Pandas Dataframe. Type **make\_uGMRT\_ds -h** in terminal for more details.
 
-2. plot\_uGMRT\_ds : Plot the dynamic spectrum from the Pandas Dataframe file made using ``make\_uGMRT\_ds''. Type ``plot\_uGMRT\_ds -h'' in terminal for more details.
+2. plot\_uGMRT\_ds : Plot the dynamic spectrum from the Pandas Dataframe file made using **make\_uGMRT\_ds**. Type **plot\_uGMRT\_ds -h** in terminal for more details.
